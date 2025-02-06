@@ -18,9 +18,6 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9
     devDependencies:
-      '@config/typescript':
-        specifier: file:..\typescript
-        version: link:../typescript
       tsup:
         specifier: ^8.3.6
         version: 8.3.6(typescript@5.7.3)(yaml@2.7.0)
