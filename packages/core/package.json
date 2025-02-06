@@ -31,7 +31,7 @@
         "url": "https://github.com/binhodev/consumer-react-x/issues"
     },
     "devDependencies": {
-        "@config/typescript": "file:..\\typescript",
+        "@config/typescript": "^0.0.1",
         "tsup": "^8.3.6",
         "typescript": "^5.7.3",
         "zod": "^3.24.1"
@@ -41,5 +41,6 @@
     },
     "dependencies": {
         "axios": "^1.7.9"
-    }
+    },
+    "gitHead": "830b8bf90067b6a94d7ec983cc40c40e96b637f2"
 }
