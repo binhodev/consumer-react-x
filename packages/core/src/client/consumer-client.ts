@@ -56,11 +56,6 @@ export class ConsumerReactClient {
                 return response;
             },
             async (error) => {
-                // for (const plugin of this.plugins) {
-                //     if (plugin.onError) {
-                //         error = await plugin.onError(error);
-                //     }
-                // }
                 const consumerError: ConsumerReactError = {
                     ...error,
                     message: error.message,
