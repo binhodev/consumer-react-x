@@ -1,6 +1,7 @@
 {
     "name": "@config/typescript",
     "version": "0.0.1",
+    "private": true,
     "description": "TypeScript configurations for packages",
     "author": "Binho.dev <silvinhofranca.dev@icloud.com>",
     "license": "ISC",
