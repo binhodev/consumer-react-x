@@ -1,0 +1,7 @@
+{
+    "extends": "@config/typescript/base.json",
+    "compilerOptions": {
+        "outDir": "lib"
+    },
+    "exclude": ["node_modules", "tsup.config.ts"]
+}
