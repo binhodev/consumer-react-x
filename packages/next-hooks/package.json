@@ -1,7 +1,6 @@
 {
-    "name": "@consumer-react/next",
-    "version": "0.0.0",
-    "private": true,
+    "name": "@consumer-react/next-hooks",
+    "version": "0.0.1",
     "description": "ConsumerReact Hooks for NextJS",
     "keywords": [
         "nextjs",
@@ -22,12 +21,19 @@
     "publishConfig": {
         "access": "public"
     },
-    "scripts": {},
-    "dependencies": {},
+    "scripts": {
+        "build": "tsup",
+        "lint": "eslint 'src/**/*.{ts,tsx}'",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "@consumer-react/core": "^0.0.3"
+    },
     "devDependencies": {
-        "@config/typescript": "file:../typescript",
+        "@types/react": "^19.0.8",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "tsup": "^8.3.6",
         "typescript": "^5.7.3",
         "zod": "^3.24.1"
     },
