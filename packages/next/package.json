@@ -1,6 +1,7 @@
 {
     "name": "@consumer-react/next",
-    "version": "0.0.1",
+    "version": "0.0.0",
+    "private": true,
     "description": "ConsumerReact Hooks for NextJS",
     "keywords": [
         "nextjs",
@@ -22,9 +23,7 @@
         "access": "public"
     },
     "scripts": {},
-    "dependencies": {
-        "@consumer-react/core": "*"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@config/typescript": "file:../typescript",
         "react": "^19.0.0",
