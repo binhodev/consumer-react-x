@@ -1,0 +1,10 @@
+# Ignore todos os arquivos e pastas
+*
+
+# Exceto o diretório dist e os arquivos essenciais
+!lib/
+!package.json
+!tsconfig.json
+!README.md
+!LICENSE.md
+!CHANGELOG.md
