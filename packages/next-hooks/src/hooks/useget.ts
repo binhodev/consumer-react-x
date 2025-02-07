@@ -1,6 +1,13 @@
-import { ConsumerReactClient, ConsumerReactError } from "@consumer-react/core";
+import {
+    ConsumerReactClient,
+    type ConsumerReactError,
+} from "@consumer-react/core";
 import { useEffect, useState } from "react";
-import { ConsumerReactHooksOptions, ConsumerReactHooksResponse } from "../types";
+import {
+    ConsumerReactHooksOptions,
+    ConsumerReactHooksResponse,
+} from "../types";
+import useLatest from "./uselatest";
 
 export function useGet<T>(
     client: ConsumerReactClient,
@@ -11,34 +18,42 @@ export function useGet<T>(
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ConsumerReactError | null>(null);
 
+    const onSuccessRef = useLatest(onSuccess);
+    const onErrorRef = useLatest(onError);
+
     useEffect(() => {
         let isMounted = true;
         setIsLoading(true);
 
-        client
-            .get(route)
-            .then((response) => {
-                const parsedData = schema.parse(response.data);
+        const fetchData = async () => {
+            try {
+                const response = await client.get(route);
+                if (!response || !response.data) {
+                    throw new Error("Invalid format response.");
+                }
 
+                const parsedData = schema.parse(response.data);
                 if (isMounted) {
                     setData(parsedData);
-                    onSuccess && onSuccess(parsedData);
+                    onSuccessRef.current && onSuccessRef.current(parsedData);
                 }
-            })
-            .catch((error: ConsumerReactError) => {
+            } catch (e) {
                 if (isMounted) {
-                    setError(error);
-                    onError && onError(error);
+                    setError(e as ConsumerReactError);
+                    onErrorRef.current &&
+                        onErrorRef.current(e as ConsumerReactError);
                 }
-            })
-            .finally(() => {
+            } finally {
                 if (isMounted) setIsLoading(false);
-            });
+            }
+        };
+
+        fetchData();
 
         return () => {
             isMounted = false;
         };
-    }, [client, route, schema, onSuccess, onError]);
+    }, [client, route, schema]);
 
     return { data, isLoading, error };
 }
