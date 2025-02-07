@@ -1,6 +1,6 @@
 {
     "name": "@consumer-react/next-hooks",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "ConsumerReact Hooks for NextJS",
     "keywords": [
         "nextjs",
